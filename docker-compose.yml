@@ -1,0 +1,19 @@
+version: "3.7"
+services: 
+  app-angular:
+    container_name: app-angular 
+    build:  
+      context: ./angular
+  app-mob-react:
+    container_name: app-mob-react 
+    build: 
+      context: ./app-mob-task
+  orchestrator:
+    container_name: orchestrator
+    ports: 
+      - 80:80
+    depends_on: 
+      - app-angular 
+      - app-mob-react 
+    build: 
+      context: .
